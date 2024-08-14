@@ -82,6 +82,8 @@ export function analyzeTypeScriptInSvelte(
 
   ctx.appendOriginalToEnd();
 
+  console.log(code.render);
+
   return ctx;
 }
 /**

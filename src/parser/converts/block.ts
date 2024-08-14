@@ -278,6 +278,8 @@ export function convertEachBlock(
     ...ctx.getConvertLocation({ start: nodeStart, end: node.end }),
   };
 
+  console.log(node);
+
   let indexRange: null | { start: number; end: number } = null;
 
   if (node.index) {

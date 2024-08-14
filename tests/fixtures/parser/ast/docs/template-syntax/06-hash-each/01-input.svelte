@@ -1,3 +1,4 @@
+<script lang="ts"></script>
 {#each expression as name}...{/each}
 {#each expression as name, index}...{/each}
 {#each expression as name (key)}...{/each}

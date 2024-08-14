@@ -662,9 +662,13 @@ export class ScriptLetContext {
       resolvedParams = params;
     }
     if (!resolvedParams || resolvedParams.length === 0) {
+      const isElseBlock =
+        block.type === "SvelteElseBlock" &&
+        block.elseif === false &&
+        block.parent.type !== "SvelteEachBlock";
       const restore = this.appendScript(
-        `{`,
-        block.range[0],
+        isElseBlock ? `else{` : `{`,
+        isElseBlock ? block.range[0] - 4 : block.range[0],
         this.currentScriptScopeKind,
         "BlockStatement",
         (st, tokens, _comments, result) => {

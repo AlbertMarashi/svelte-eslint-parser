@@ -100,17 +100,17 @@
             "type": "Identifier",
             "name": "expression",
             "range": [
-              79,
-              89
+              160,
+              170
             ],
             "loc": {
               "start": {
-                "line": 3,
-                "column": 5
+                "line": 5,
+                "column": 51
               },
               "end": {
-                "line": 3,
-                "column": 15
+                "line": 5,
+                "column": 61
               }
             }
           },
@@ -231,17 +231,17 @@
             "type": "Identifier",
             "name": "expression",
             "range": [
-              79,
-              89
+              160,
+              170
             ],
             "loc": {
               "start": {
-                "line": 3,
-                "column": 5
+                "line": 5,
+                "column": 51
               },
               "end": {
-                "line": 3,
-                "column": 15
+                "line": 5,
+                "column": 61
               }
             }
           },
@@ -327,17 +327,17 @@
         "type": "Identifier",
         "name": "expression",
         "range": [
-          79,
-          89
+          160,
+          170
         ],
         "loc": {
           "start": {
-            "line": 3,
-            "column": 5
+            "line": 5,
+            "column": 51
           },
           "end": {
-            "line": 3,
-            "column": 15
+            "line": 5,
+            "column": 61
           }
         }
       },

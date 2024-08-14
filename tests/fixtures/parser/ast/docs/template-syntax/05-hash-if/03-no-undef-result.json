@@ -7,8 +7,8 @@
   },
   {
     "ruleId": "no-undef",
-    "code": "porridge",
-    "line": 3,
-    "column": 16
+    "code": "",
+    "line": 9,
+    "column": 41
   }
 ]

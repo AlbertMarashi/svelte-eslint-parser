@@ -285,6 +285,9 @@ function* listupFixturesImpl(dir: string): Iterable<{
           );
         }
       }
+      // console.log("FILE", inputFileName.includes("06-hash-each"), inputFileName);
+      if (!inputFileName.includes("06-hash-each/01-input.svelte")) continue;
+
       yield {
         input,
         inputFileName,

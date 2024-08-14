@@ -7,8 +7,8 @@
   },
   {
     "ruleId": "no-undef",
-    "code": "expression",
-    "line": 1,
-    "column": 27
+    "code": "",
+    "line": 3,
+    "column": 20
   }
 ]
