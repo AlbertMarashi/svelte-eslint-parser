@@ -20,6 +20,8 @@ export function convertRenderTag(
   ctx.scriptLet.addExpressionFromRange(
     [callRange.start, callRange.end],
     mustache,
+    // TODO: not sure if this should be true, since we are rendering a string
+    false,
     null,
     (
       expression:

@@ -243,6 +243,8 @@ function processAttributeValue(
       }
       return v;
     });
+
+  const containsLiterals = nodes.some((v) => v.type === "Text");
   if (
     nodes.length === 1 &&
     (nodes[0].type === "ExpressionTag" || nodes[0].type === "MustacheTag") &&
@@ -253,7 +255,13 @@ function processAttributeValue(
       attribute.key.name,
       ctx,
     );
-    const mustache = convertMustacheTag(nodes[0], attribute, typing, ctx);
+    const mustache = convertMustacheTag(
+      nodes[0],
+      attribute,
+      typing,
+      ctx,
+      false,
+    );
     attribute.value.push(mustache);
     return;
   }
@@ -263,7 +271,13 @@ function processAttributeValue(
       continue;
     }
     if (v.type === "ExpressionTag" || v.type === "MustacheTag") {
-      const mustache = convertMustacheTag(v, attribute, null, ctx);
+      const mustache = convertMustacheTag(
+        v,
+        attribute,
+        null,
+        ctx,
+        containsLiterals,
+      );
       attribute.value.push(mustache);
       continue;
     }

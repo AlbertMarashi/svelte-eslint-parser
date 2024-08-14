@@ -1,0 +1,298 @@
+{
+  "type": "global",
+  "variables": [
+    {
+      "name": "$$slots",
+      "identifiers": [],
+      "defs": [],
+      "references": []
+    },
+    {
+      "name": "$$props",
+      "identifiers": [],
+      "defs": [],
+      "references": []
+    },
+    {
+      "name": "$$restProps",
+      "identifiers": [],
+      "defs": [],
+      "references": []
+    }
+  ],
+  "references": [],
+  "childScopes": [
+    {
+      "type": "module",
+      "variables": [
+        {
+          "name": "foo",
+          "identifiers": [
+            {
+              "type": "Identifier",
+              "name": "foo",
+              "range": [
+                23,
+                26
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 4
+                },
+                "end": {
+                  "line": 2,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "defs": [
+            {
+              "type": "Variable",
+              "name": {
+                "type": "Identifier",
+                "name": "foo",
+                "range": [
+                  23,
+                  26
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 7
+                  }
+                }
+              },
+              "node": {
+                "type": "VariableDeclarator",
+                "id": {
+                  "type": "Identifier",
+                  "name": "foo",
+                  "range": [
+                    23,
+                    26
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 7
+                    }
+                  }
+                },
+                "init": {
+                  "type": "Literal",
+                  "raw": "\"bar\"",
+                  "value": "bar",
+                  "range": [
+                    29,
+                    34
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 15
+                    }
+                  }
+                },
+                "range": [
+                  23,
+                  34
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 15
+                  }
+                }
+              }
+            }
+          ],
+          "references": [
+            {
+              "identifier": {
+                "type": "Identifier",
+                "name": "foo",
+                "range": [
+                  23,
+                  26
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 7
+                  }
+                }
+              },
+              "from": "module",
+              "init": true,
+              "resolved": {
+                "type": "Identifier",
+                "name": "foo",
+                "range": [
+                  23,
+                  26
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 7
+                  }
+                }
+              }
+            },
+            {
+              "identifier": {
+                "type": "Identifier",
+                "name": "foo",
+                "range": [
+                  57,
+                  60
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 11
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 14
+                  }
+                }
+              },
+              "from": "module",
+              "init": null,
+              "resolved": {
+                "type": "Identifier",
+                "name": "foo",
+                "range": [
+                  23,
+                  26
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 7
+                  }
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "identifier": {
+            "type": "Identifier",
+            "name": "foo",
+            "range": [
+              23,
+              26
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 4
+              },
+              "end": {
+                "line": 2,
+                "column": 7
+              }
+            }
+          },
+          "from": "module",
+          "init": true,
+          "resolved": {
+            "type": "Identifier",
+            "name": "foo",
+            "range": [
+              23,
+              26
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 4
+              },
+              "end": {
+                "line": 2,
+                "column": 7
+              }
+            }
+          }
+        },
+        {
+          "identifier": {
+            "type": "Identifier",
+            "name": "foo",
+            "range": [
+              57,
+              60
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 11
+              },
+              "end": {
+                "line": 4,
+                "column": 14
+              }
+            }
+          },
+          "from": "module",
+          "init": null,
+          "resolved": {
+            "type": "Identifier",
+            "name": "foo",
+            "range": [
+              23,
+              26
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 4
+              },
+              "end": {
+                "line": 2,
+                "column": 7
+              }
+            }
+          }
+        }
+      ],
+      "childScopes": [],
+      "through": []
+    }
+  ],
+  "through": []
+}

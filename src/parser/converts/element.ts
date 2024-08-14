@@ -138,7 +138,7 @@ export function* convertChildren(
       continue;
     }
     if (child.type === "ExpressionTag" || child.type === "MustacheTag") {
-      yield convertMustacheTag(child, parent, null, ctx);
+      yield convertMustacheTag(child, parent, null, ctx, true);
       continue;
     }
     if (child.type === "HtmlTag" || child.type === "RawMustacheTag") {

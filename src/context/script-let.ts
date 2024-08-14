@@ -155,20 +155,46 @@ export class ScriptLetContext {
     ...callbacks: ScriptLetCallback<E>[]
   ): ScriptLetCallback<E>[] {
     const range = getNodeRange(expression);
-    return this.addExpressionFromRange(range, parent, typing, ...callbacks);
+    return this.addExpressionFromRange(
+      range,
+      parent,
+      false,
+      typing,
+      ...callbacks,
+    );
+  }
+
+  public addExpressionTemplateLiteral<E extends ESTree.Expression>(
+    expression: E,
+    parent: SvelteNode,
+    asTemplateLiteral: boolean,
+    typing?: string | null,
+    ...callbacks: ScriptLetCallback<E>[]
+  ): ScriptLetCallback<E>[] {
+    const range = getNodeRange(expression);
+    return this.addExpressionFromRange(
+      range,
+      parent,
+      asTemplateLiteral,
+      typing,
+      ...callbacks,
+    );
   }
 
   public addExpressionFromRange<E extends ESTree.Expression>(
     range: [number, number],
     parent: SvelteNode,
+    asTemplateLiteral: boolean,
     typing?: string | null,
     ...callbacks: ScriptLetCallback<E>[]
   ): ScriptLetCallback<E>[] {
     const part = this.ctx.code.slice(...range);
-    const isTS = typing && this.ctx.isTypeScript();
+    const isTS = Boolean(typing) && this.ctx.isTypeScript();
     this.appendScript(
-      `(${part})${isTS ? `as (${typing})` : ""};`,
-      range[0] - 1,
+      asTemplateLiteral
+        ? `(\`\${${part}${isTS ? ` as ${typing}` : ""}}\`);`
+        : `(${part})${isTS ? `as (${typing})` : ""};`,
+      asTemplateLiteral ? range[0] - 4 : range[0] - 1,
       this.currentScriptScopeKind,
       "ExpressionStatement",
       (st, tokens, comments, result) => {
@@ -176,7 +202,16 @@ export class ScriptLetContext {
         const tsAs: TSAsExpression | null = isTS
           ? (exprSt.expression as any)
           : null;
-        const node: ESTree.Expression = tsAs?.expression || exprSt.expression;
+
+        const node: ESTree.Expression = tsAs
+          ? asTemplateLiteral
+            ? ((tsAs.expression as TSESTree.TemplateLiteral)
+                .expressions[0] as any)
+            : (tsAs.expression as TSESTree.Expression)
+          : asTemplateLiteral
+            ? ((exprSt.expression as ESTree.TemplateLiteral)
+                .expressions[0] as any)
+            : exprSt.expression;
         // Process for nodes
         for (const callback of callbacks) {
           callback(node as E, result);
@@ -185,6 +220,11 @@ export class ScriptLetContext {
         tokens.shift(); // (
         tokens.pop(); // )
         tokens.pop(); // ;
+
+        if (asTemplateLiteral) {
+          tokens.shift(); // `${
+          tokens.pop(); // }`
+        }
 
         if (isTS) {
           for (const scope of extractTypeNodeScopes(
@@ -196,7 +236,7 @@ export class ScriptLetContext {
           this.remapNodes(
             [
               {
-                offset: range[0] - 1,
+                offset: asTemplateLiteral ? range[0] - 4 : range[0] - 1,
                 range,
                 newNode: node,
               },

@@ -15,8 +15,16 @@ export function convertMustacheTag(
   parent: SvelteMustacheTag["parent"],
   typing: string | null,
   ctx: Context,
+  asTemplateLiteral: boolean,
 ): SvelteMustacheTagText {
-  return convertMustacheTag0(node, "text", parent, typing, ctx);
+  return convertMustacheTag0(
+    node,
+    "text",
+    parent,
+    typing,
+    ctx,
+    asTemplateLiteral,
+  );
 }
 /** Convert for MustacheTag */
 export function convertRawMustacheTag(
@@ -30,6 +38,7 @@ export function convertRawMustacheTag(
     parent,
     null,
     ctx,
+    true,
   );
   const atHtmlStart = ctx.code.indexOf("@html", mustache.range[0]);
   ctx.addToken("MustacheKeyword", {
@@ -75,6 +84,7 @@ function convertMustacheTag0<T extends SvelteMustacheTag>(
   parent: T["parent"],
   typing: string | null,
   ctx: Context,
+  asTemplateLiteral: boolean,
 ): T {
   const mustache = {
     type: "SvelteMustacheTag",
@@ -84,9 +94,10 @@ function convertMustacheTag0<T extends SvelteMustacheTag>(
     ...ctx.getConvertLocation(node),
   } as T;
 
-  ctx.scriptLet.addExpression(
+  ctx.scriptLet.addExpressionTemplateLiteral(
     node.expression,
     mustache,
+    asTemplateLiteral,
     hasTypeInfo(node.expression) ? null : typing,
     (es) => {
       mustache.expression = es;
